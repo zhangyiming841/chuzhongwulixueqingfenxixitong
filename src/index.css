@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .animate-spin-orbit {
+    animation: spin-orbit 8s linear infinite;
+  }
+  .animate-spin-orbit-slow {
+    animation: spin-orbit 12s linear infinite;
+  }
+  .animate-spin-orbit-reverse {
+    animation: spin-orbit 10s linear infinite reverse;
+  }
+}
+
+@keyframes spin-orbit {
+  from { transform: rotateX(70deg) rotateY(var(--ry, 0deg)) rotateZ(0deg); }
+  to { transform: rotateX(70deg) rotateY(var(--ry, 0deg)) rotateZ(360deg); }
+}
