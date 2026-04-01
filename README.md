@@ -1,20 +1,78 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# 初中物理学情分析系统
 
-# Run and deploy your AI Studio app
+一个面向公开展示的物理教学诊断项目，当前包含：
 
-This contains everything you need to run your app locally.
+- 前端 MVP 工作台
+- 文本上传
+- 浏览器语音录入
+- 本地知识库维护
+- 诊断历史记录
+- 人工评估记录
 
-View your app in AI Studio: https://ai.studio/apps/e209448c-dc61-4f32-9cb9-b04cd3dd9952
+## 当前状态
 
-## Run Locally
+项目现在分成两层能力：
 
-**Prerequisites:**  Node.js
+1. 前端本地 MVP
+   - 已可直接使用
+   - 数据保存在浏览器本地
+   - 不依赖前端 API key
 
+2. 服务端雏形
+   - 预留了本地 JSON 存储和 AI 增强诊断逻辑
+   - 仅在服务端读取 `GEMINI_API_KEY`
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## 本地运行
+
+前置要求：
+
+- Node.js 18+
+
+安装依赖：
+
+```bash
+npm install
+```
+
+启动开发环境：
+
+```bash
+npm run dev
+```
+
+构建生产版本：
+
+```bash
+npm run build
+```
+
+## 环境变量
+
+如需启用服务端 AI 增强诊断，在本地创建 `.env.local` 或 `.env`：
+
+```env
+GEMINI_API_KEY=your_server_side_key
+```
+
+注意：
+
+- 不要把真实密钥提交到 Git
+- 当前仓库已忽略 `.env*`，只保留 `.env.example`
+- 前端构建配置已经去掉密钥注入
+
+## 仓库安全说明
+
+这个仓库目前适合公开展示，但请继续遵守下面几条：
+
+- 不要提交真实 `.env` 文件
+- 不要把真实用户诊断数据直接写进仓库
+- 如果密钥曾经泄露过，即使已经删掉，也要立即轮换
+
+## 下一步建议
+
+如果你要把它正式部署到线上展示，建议继续补这几项：
+
+- 把前端工作台正式接到 `server.ts`
+- 把本地浏览器存储改成服务端 API
+- 修复现有部分中文乱码数据
+- 增加部署说明和线上演示地址
